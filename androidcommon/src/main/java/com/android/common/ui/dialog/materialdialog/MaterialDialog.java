@@ -297,7 +297,9 @@ public class MaterialDialog {
                 mNegativeButtonOrdinary = (Button) mButtonLayoutOrdinary.findViewById(R.id.btn_n_ordinary);
                 imgLine = (ImageView) mButtonLayoutOrdinary.findViewById(R.id.img_line);
                 mButtonLayoutOrdinary.setVisibility(View.VISIBLE);
-                mButtonLayout.setVisibility(View.GONE);
+                LinearLayout.LayoutParams linearParams = (LinearLayout.LayoutParams) mButtonLayout.getLayoutParams();
+                linearParams.height = 0;// 控件的高强制设成0
+                mButtonLayout.setLayoutParams(linearParams);
             } else {
                 mPositiveButton = (Button) mButtonLayout.findViewById(R.id.btn_p);
                 mNegativeButton = (Button) mButtonLayout.findViewById(R.id.btn_n);

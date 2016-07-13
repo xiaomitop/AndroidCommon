@@ -107,7 +107,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:visibility="gone"
-            android:minWidth="@dimen/action_button_height"
             android:orientation="vertical">
 
             <ImageView
@@ -123,8 +122,9 @@
                 <Button
                     android:id="@+id/btn_n_ordinary"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/action_button_ordinary_height"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:background="@drawable/dialog_button"
                     android:textColor="@color/black_de"
                     android:textSize="@dimen/action_button_text_size"
@@ -141,12 +141,13 @@
                 <Button
                     android:id="@+id/btn_p_ordinary"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/action_button_ordinary_height"
                     android:layout_weight="1"
                     android:textSize="@dimen/action_button_text_size"
                     android:background="@drawable/dialog_button"
                     android:stateListAnimator="@null"
                     android:textColor="#ff239ff2"
+                    android:gravity="center"
                     tools:text="OK"
                     tools:ignore="UnusedAttribute" />
             </LinearLayout>
