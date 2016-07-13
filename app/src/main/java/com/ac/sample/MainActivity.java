@@ -259,14 +259,14 @@ public class MainActivity extends ACBaseActivity {
                                 "then the beautiful AlertDialog will show automatically. It is artistic, conforms to Google Material Design." +
                                 " I hope that you will like it, and enjoy it. ^ ^")
                         //mMaterialDialog.setBackgroundResource(R.drawable.background);
-                .setPositiveButton("OK", new MaterialDialog.DialogOnClickListener() {
+                .setPositiveButton("连接", new MaterialDialog.DialogOnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(MainActivity.this, "Ok",
                                 Toast.LENGTH_LONG).show();
                     }
                 })
-                .setNegativeButton("CANCEL",
+                .setNegativeButton("取消",
                         new MaterialDialog.DialogOnClickListener() {
                             @Override
                             public void onClick(View v) {

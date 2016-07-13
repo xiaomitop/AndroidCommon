@@ -19,7 +19,7 @@
         <LinearLayout
             android:id="@+id/contentView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -28,8 +28,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="23dp"
+                android:layout_marginStart="23dp"
                 android:layout_marginTop="23dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginEnd="24dp"
                 android:textColor="@color/black_de"
                 android:textSize="23sp"
                 tools:text="Material title"/>
@@ -47,7 +49,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="24dp"
-                    android:paddingRight="23dp">
+                    android:paddingStart="24dp"
+                    android:paddingRight="23dp"
+                    android:paddingEnd="23dp">
 
                     <TextView
                         android:id="@+id/message"
@@ -70,6 +74,8 @@
             android:paddingTop="8dp"
             android:paddingBottom="12dp"
             android:layout_marginBottom="8dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
             android:layout_gravity="right"
             android:gravity="center_vertical">
 
@@ -78,13 +84,18 @@
                 style="@style/ActionButton"
                 android:textColor="@color/black_de"
                 android:stateListAnimator="@null"
-                tools:text="CANCEL"/>
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
+                tools:text="CANCEL"
+                tools:ignore="UnusedAttribute" />
 
             <Button
                 android:id="@+id/btn_p"
                 style="@style/ActionButton"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="12dp"
+                android:gravity="center"
+                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
                 android:stateListAnimator="@null"
                 android:textColor="#ff239ff2"
                 tools:text="OK"/>
@@ -94,7 +105,6 @@
             android:id="@+id/buttonLayout_ordinary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             android:visibility="gone"
             android:minWidth="@dimen/action_button_height"
@@ -119,7 +129,8 @@
                     android:textColor="@color/black_de"
                     android:textSize="@dimen/action_button_text_size"
                     android:stateListAnimator="@null"
-                    tools:text="CANCEL"/>
+                    tools:text="CANCEL"
+                    tools:ignore="UnusedAttribute" />
 
                 <ImageView
                     android:id="@+id/img_line"
@@ -136,7 +147,8 @@
                     android:background="@drawable/dialog_button"
                     android:stateListAnimator="@null"
                     android:textColor="#ff239ff2"
-                    tools:text="OK"/>
+                    tools:text="OK"
+                    tools:ignore="UnusedAttribute" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

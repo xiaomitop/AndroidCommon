@@ -56,7 +56,6 @@ public class MaterialDialog {
     private boolean isOrdinary;
     private int pId = -1, nId = -1;
     private String pText, nText;
-    //View.OnClickListener pListener, nListener;
     DialogOnClickListener pListener, nListener;
 
 
@@ -334,7 +333,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             pListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -349,7 +348,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             pListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -367,7 +366,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             nListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -382,7 +381,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             nListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -400,7 +399,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             pListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -415,7 +414,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             pListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -434,7 +433,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             nListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -449,7 +448,7 @@ public class MaterialDialog {
                         @Override
                         public void onClick(View view) {
                             nListener.onClick(view);
-                            if (isShow()){
+                            if (isShow()) {
                                 dismiss();
                             }
                         }
@@ -483,7 +482,11 @@ public class MaterialDialog {
             if (mBackgroundDrawable != null) {
                 LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(
                         R.id.material_background);
-                linearLayout.setBackground(mBackgroundDrawable);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    linearLayout.setBackground(mBackgroundDrawable);
+                } else {
+                    linearLayout.setBackgroundDrawable(mBackgroundDrawable);
+                }
             }
 
             if (mMessageContentView != null) {
@@ -662,7 +665,11 @@ public class MaterialDialog {
         public void setBackground(Drawable drawable) {
             LinearLayout linearLayout = (LinearLayout) mAlertDialogWindow.findViewById(
                     R.id.material_background);
-            linearLayout.setBackground(drawable);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                linearLayout.setBackground(drawable);
+            } else {
+                linearLayout.setBackgroundDrawable(mBackgroundDrawable);
+            }
         }
 
 
