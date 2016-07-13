@@ -10,15 +10,15 @@ import java.util.Map;
  * 作者：yangtao
  * 创建时间：2016/4/28 09:48
  */
-public class HttpCallback<T> {
+public class HttpCallBack<T> {
 
     private Class<T> mClazz;
 
-    public HttpCallback() {
+    public HttpCallBack() {
 
     }
 
-    public HttpCallback(Class<T> clazz) {
+    public HttpCallBack(Class<T> clazz) {
         this.mClazz = clazz;
     }
 
