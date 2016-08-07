@@ -6,9 +6,6 @@ import android.support.v4.app.FragmentManager;
 import com.ac.sample.R;
 import com.android.common.mvp.view.ViewImpl;
 
-/**
- * Created by qibin on 2015/11/16.
- */
 public class MainView extends ViewImpl {
 
     public void showFragment(FragmentManager fm) {

@@ -8,7 +8,6 @@ import com.android.common.mvp.presenter.IPresenter;
 
 /**
  * View层的基类
- * Created by qibin on 2015/11/15.
  */
 public abstract class ViewImpl implements IView {
 

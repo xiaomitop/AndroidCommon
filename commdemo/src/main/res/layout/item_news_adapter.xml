@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="8dp">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/image" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="新闻标题"
+        android:id="@+id/textvTitle"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceInverse"
+        android:layout_toRightOf="@+id/image"
+        android:textColor="@color/black"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/image" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        tools:text="萨的风格比较便来到南非观看"
+        android:maxLines="2"
+        android:id="@+id/textDescription"
+        android:layout_below="@+id/textvTitle"
+        android:layout_toRightOf="@+id/image"
+        android:layout_toEndOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/itemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#9a9a9a"
+        android:textSize="14sp"
+        android:drawableLeft="@mipmap/ic_time"
+        android:drawableStart="@mipmap/ic_time"
+        android:drawablePadding="2dp"
+        android:layout_alignBottom="@+id/image"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        tools:text="2016-08-06"/>
+
+</RelativeLayout>

@@ -123,7 +123,6 @@ final public class ACActivityStack {
      * 
      */
     public void AppExit() {
-
         try {
             finishAllActivity();
             Runtime.getRuntime().exit(0);

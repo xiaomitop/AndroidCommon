@@ -35,7 +35,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.android.common.adapter.interfaces.I_mageLoad;
+import com.android.common.adapter.interfaces.I_ImageLoad;
 
 /**
  * @author Joan Zapata
@@ -61,7 +61,7 @@ public class BaseAdapterHelper {
     /** Package private field to retain the associated user object and detect a change */
     Object associatedObject;
 
-    private I_mageLoad imageLoad;
+    private I_ImageLoad imageLoad;
 
     protected BaseAdapterHelper(Context context, ViewGroup parent, int layoutId, int position) {
         this.context = context;
@@ -210,7 +210,7 @@ public class BaseAdapterHelper {
     }
 
     /** Custom network load images */
-    public BaseAdapterHelper setImageLoad(I_mageLoad imageLoad){
+    public BaseAdapterHelper setImageLoad(I_ImageLoad imageLoad){
         this.imageLoad = imageLoad;
         return this;
     }

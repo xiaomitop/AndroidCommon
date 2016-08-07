@@ -31,7 +31,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     // 分割线颜色
     private int color;
     // 分割线尺寸
-    private int size;
+    private int size = 1;
 
     public DividerLine() {
         this(VERTICAL);

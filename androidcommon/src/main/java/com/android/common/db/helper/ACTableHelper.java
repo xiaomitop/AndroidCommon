@@ -42,7 +42,7 @@ public class ACTableHelper {
         for (Field field : fields) {
             //没有注解@Column 不创建数据库字段
             if (!field.isAnnotationPresent(Column.class)) {
-                return;
+                continue;
             }
             Column column = field.getAnnotation(Column.class);
             String columnType;

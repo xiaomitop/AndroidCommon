@@ -15,17 +15,16 @@ import static com.android.common.adapter.BaseAdapterHelper.get;
  * ACCommonAdapter
  * 通用Adapter,适用于RecyclerView,简化大量重复代码
  */
-public abstract class ACCommonRecyclerAdapter<T> extends RecyclerView.Adapter implements I_Adapter<T> {
-    protected final Context context;
-    protected final int layoutResId;
-    protected final List<T> data;
+public abstract class ACCommonRecyclerAdapter<T> extends ACBaseRecyclerAdapter<T> implements I_Adapter<T> {
 
-    public abstract int getItemLayoutId();
-
+    @SuppressWarnings("unchecked")
     public ACCommonRecyclerAdapter(Context context, List<T> data) {
-        this.data = data;
-        this.context = context;
-        this.layoutResId = getItemLayoutId();
+        super(context, data);
+    }
+
+    @Override
+    public int getLayoutResId(T item) {
+        return layoutResId;
     }
 
     @Override
@@ -40,30 +39,6 @@ public abstract class ACCommonRecyclerAdapter<T> extends RecyclerView.Adapter im
         BaseAdapterHelper helper = ((RecyclerViewHolder) holder).adapterHelper;
         helper.setAssociatedObject(getItem(position));
         bindData(helper, position, getItem(position));
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return getLayoutResId(getItem(position));
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    public T getItem(int position) {
-        return position >= data.size() ? null : data.get(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        return data.size();
-    }
-
-    @Override
-    public int getLayoutResId(T item) {
-        return this.layoutResId;
     }
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {

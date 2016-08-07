@@ -7,9 +7,6 @@ import java.util.ArrayList;
 
 import butterknife.OnClick;
 
-/**
- * Created by qibin on 2015/11/16.
- */
 public class MyFragment extends FragmentPresenterImpl<MainFragmentView> {
     @OnClick(R.id.newdata)
     void newData() {

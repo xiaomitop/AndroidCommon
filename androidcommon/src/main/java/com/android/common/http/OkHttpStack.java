@@ -1,5 +1,6 @@
 package com.android.common.http;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -208,6 +209,7 @@ public class OkHttpStack implements I_HttpStack {
                 ExecutorDelivery.instance().postError(request, new OkhttpException(e));
             }
 
+            @SuppressLint("DefaultLocale")
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 //测试缓存

@@ -5,9 +5,6 @@ import android.os.Handler;
 import java.util.ArrayList;
 import java.util.Random;
 
-/**
- * Created by qibin on 2015/11/16.
- */
 public class MainBiz {
 
     public void info(final Callback<ArrayList<String>> callback) {

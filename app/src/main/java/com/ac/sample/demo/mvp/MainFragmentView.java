@@ -12,9 +12,6 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
-/**
- * Created by qibin on 2015/11/16.
- */
 public class MainFragmentView extends ViewImpl {
 
     private ListView mListView;

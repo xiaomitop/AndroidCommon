@@ -39,7 +39,6 @@ public class OkHttpUtils {
     public interface ContentType {
         int FORM = 0;
         int JSON = 1;
-        int FAST_JSON = 3;
     }
 
     /**
@@ -174,8 +173,6 @@ public class OkHttpUtils {
 
                 if (contentType == ContentType.JSON) {
                     request = new JsonRequest(httpConfig, params, callback);
-                } else if (contentType == ContentType.FAST_JSON) {
-                    request = new FormRequest(httpConfig, params, callback);
                 } else {
                     request = new FormRequest(httpConfig, params, callback);
                 }
