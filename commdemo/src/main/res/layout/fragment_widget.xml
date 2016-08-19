@@ -1,13 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:slideswitch="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/card_shadow"
+    android:orientation="vertical"
     android:padding="20dp">
 
     <com.yt.commdemo.widget.DropdownList
         android:id="@+id/dropdownList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.yt.commdemo.widget.SlideSwitch
+            android:id="@+id/swit"
+            android:layout_width="80dip"
+            android:layout_height="40dip"
+            slideswitch:isOpen="true"
+            slideswitch:shape="rect"
+            slideswitch:themeColor="#ffee3a00" />
+
+        <com.yt.commdemo.widget.SlideSwitch
+            android:layout_width="80dip"
+            android:layout_height="40dip"
+            slideswitch:isOpen="true"
+            slideswitch:shape="circle"
+            slideswitch:themeColor="#ff0a5a00"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+
+        <com.yt.commdemo.widget.SlideSwitch
+            android:id="@+id/swit3"
+            android:layout_width="80dip"
+            android:layout_height="40dip"
+            slideswitch:isOpen="true"
+            slideswitch:shape="circle"
+            slideswitch:themeColor="#ff73aa00"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <com.yt.commdemo.widget.SlideSwitch
+            android:id="@+id/swit4"
+            android:layout_width="80dip"
+            android:layout_height="40dip"
+            slideswitch:isOpen="false"
+            slideswitch:shape="circle"
+            slideswitch:themeColor="#f200aa96"/>
+
+        <com.yt.commdemo.widget.SlideSwitch
+            android:id="@+id/swit5"
+            android:layout_width="90dip"
+            android:layout_height="40dip"
+            slideswitch:isOpen="true"
+            slideswitch:shape="rect"
+            slideswitch:themeColor="#f23331a0"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+    </LinearLayout>
 
 </LinearLayout>
