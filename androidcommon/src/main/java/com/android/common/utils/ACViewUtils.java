@@ -36,9 +36,13 @@ import com.android.common.log.Logger;
 public class ACViewUtils {
     private static String TAG = ACViewUtils.class.getName();
 
-    /**  UI设计的基准宽度. */
+    /**
+     * UI设计的基准宽度.
+     */
     public static int UI_WIDTH = 720;
-    /**  UI设计的基准高度. */
+    /**
+     * UI设计的基准高度.
+     */
     public static int UI_HEIGHT = 1080;
 
     /**
@@ -50,7 +54,7 @@ public class ACViewUtils {
      * @param activity activity
      * @return 1 竖屏 0 横屏
      */
-    public static int getScreenDirection(Activity activity){
+    public static int getScreenDirection(Activity activity) {
         return activity.getResources().getConfiguration().orientation;
     }
 
@@ -62,10 +66,10 @@ public class ACViewUtils {
      */
     public static DisplayMetrics getDisplayMetrics(Context context) {
         Resources mResources;
-        if (context == null){
+        if (context == null) {
             mResources = Resources.getSystem();
 
-        }else{
+        } else {
             mResources = context.getResources();
         }
         return mResources.getDisplayMetrics();
@@ -98,7 +102,7 @@ public class ACViewUtils {
 
     //获取屏幕高宽
     @SuppressLint("NewApi")
-    public static Point getScreenSize(Activity activity){
+    public static Point getScreenSize(Activity activity) {
         WindowManager m = activity.getWindowManager();
         Display d = m.getDefaultDisplay(); // 获取屏幕宽、高用
 
@@ -115,14 +119,12 @@ public class ACViewUtils {
     /**
      * 描述：layout转view
      *
-     * @param context
-     *            上下文
-     * @param id
-     *            layout id
+     * @param context 上下文
+     * @param id      layout id
      * @return view
      */
-    public static View layoutToView(Context context, int id){
-        LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public static View layoutToView(Context context, int id) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         return inflater.inflate(id, null);
     }
 
@@ -130,13 +132,9 @@ public class ACViewUtils {
      * 描述：重置AbsListView的高度. item 的最外层布局要用
      * RelativeLayout,如果计算的不准，就为RelativeLayout指定一个高度
      *
-     * @param absListView
-     *            the abs list view
-     * @param lineNumber
-     *            每行几个 ListView一行一个item
-     * @param verticalSpace
-     *            the vertical space
-     *
+     * @param absListView   the abs list view
+     * @param lineNumber    每行几个 ListView一行一个item
+     * @param verticalSpace the vertical space
      */
     public static void setAbsListViewHeight(AbsListView absListView,
                                             int lineNumber, int verticalSpace) {
@@ -152,9 +150,9 @@ public class ACViewUtils {
     /**
      * 描述：获取ListView的高度.
      *
-     * @param absListView            the abs list view
-     * @param lineNumber            每行几个 ListView一行一个item
-     * @param verticalSpace            the vertical space
+     * @param absListView   the abs list view
+     * @param lineNumber    每行几个 ListView一行一个item
+     * @param verticalSpace the vertical space
      * @return the abs list view height
      */
     public static int getAbsListViewHeight(AbsListView absListView,
@@ -206,8 +204,9 @@ public class ACViewUtils {
     /**
      * 测量这个view
      * 最后通过getMeasuredWidth()获取宽度和高度.
+     *
      * @param view 要测量的view
-     * 测量过的view
+     *             测量过的view
      */
     public static void measureView(View view) {
         ViewGroup.LayoutParams p = view.getLayoutParams();
@@ -232,13 +231,13 @@ public class ACViewUtils {
     /**
      * 描述：dip转换为px.
      *
-     * @param context the context
+     * @param context  the context
      * @param dipValue the dip value
      * @return px值
      */
     public static float dip2px(Context context, float dipValue) {
         DisplayMetrics mDisplayMetrics = getDisplayMetrics(context);
-        return applyDimension(TypedValue.COMPLEX_UNIT_DIP,dipValue,mDisplayMetrics);
+        return applyDimension(TypedValue.COMPLEX_UNIT_DIP, dipValue, mDisplayMetrics);
     }
 
     /**
@@ -283,7 +282,7 @@ public class ACViewUtils {
      * @param dp the context
      * @return sp值
      */
-    public static int dp2px(Context context,int dp) {
+    public static int dp2px(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 context.getResources().getDisplayMetrics());
     }
@@ -293,7 +292,7 @@ public class ACViewUtils {
      * 描述：根据屏幕大小缩放.
      *
      * @param context the context
-     * @param value the px value
+     * @param value   the px value
      * @return the int
      */
     public static int scale(Context context, float value) {
@@ -305,13 +304,13 @@ public class ACViewUtils {
     /**
      * 描述：根据屏幕大小缩放.
      *
-     * @param displayWidth the display width
+     * @param displayWidth  the display width
      * @param displayHeight the display height
-     * @param pxValue the px value
+     * @param pxValue       the px value
      * @return the int
      */
     public static int scale(int displayWidth, int displayHeight, float pxValue) {
-        if(pxValue == 0 ){
+        if (pxValue == 0) {
             return 0;
         }
         float scale = 1;
@@ -327,13 +326,14 @@ public class ACViewUtils {
 
     /**
      * TypedValue官方源码中的算法，任意单位转换为PX单位
-     * @param unit  TypedValue.COMPLEX_UNIT_DIP
-     * @param value 对应单位的值
+     *
+     * @param unit    TypedValue.COMPLEX_UNIT_DIP
+     * @param value   对应单位的值
      * @param metrics 密度
      * @return px值
      */
     public static float applyDimension(int unit, float value,
-                                       DisplayMetrics metrics){
+                                       DisplayMetrics metrics) {
         switch (unit) {
             case TypedValue.COMPLEX_UNIT_PX:
                 return value;
@@ -342,31 +342,31 @@ public class ACViewUtils {
             case TypedValue.COMPLEX_UNIT_SP:
                 return value * metrics.scaledDensity;
             case TypedValue.COMPLEX_UNIT_PT:
-                return value * metrics.xdpi * (1.0f/72);
+                return value * metrics.xdpi * (1.0f / 72);
             case TypedValue.COMPLEX_UNIT_IN:
                 return value * metrics.xdpi;
             case TypedValue.COMPLEX_UNIT_MM:
-                return value * metrics.xdpi * (1.0f/25.4f);
+                return value * metrics.xdpi * (1.0f / 25.4f);
         }
         return 0;
     }
 
     /**
-     *
      * 描述：View树递归调用做适配.
      * uiWidth = 1080;
      * uiHeight = 700;
      * scaleContentView((RelativeLayout)findViewById(R.id.rootLayout));
      * 要求布局中的单位都用px并且和美工的设计图尺寸一致，包括所有宽高，Padding,Margin,文字大小
+     *
      * @param contentView ViewGroup
      */
-    public static void scaleContentView(ViewGroup contentView){
+    public static void scaleContentView(ViewGroup contentView) {
         scaleView(contentView);
-        if(contentView.getChildCount()>0){
-            for(int i=0;i<contentView.getChildCount();i++){
-                if(contentView.getChildAt(i) instanceof ViewGroup){
-                    scaleContentView((ViewGroup)(contentView.getChildAt(i)));
-                }else{
+        if (contentView.getChildCount() > 0) {
+            for (int i = 0; i < contentView.getChildCount(); i++) {
+                if (contentView.getChildAt(i) instanceof ViewGroup) {
+                    scaleContentView((ViewGroup) (contentView.getChildAt(i)));
+                } else {
                     scaleView(contentView.getChildAt(i));
                 }
             }
@@ -375,41 +375,42 @@ public class ACViewUtils {
 
     /**
      * 按比例缩放View，以布局中的尺寸为基准
+     *
      * @param view view
      */
-    public static void scaleView(View view){
-        if (view instanceof TextView){
+    public static void scaleView(View view) {
+        if (view instanceof TextView) {
             TextView textView = (TextView) view;
-            setTextSize(textView,textView.getTextSize());
+            setTextSize(textView, textView.getTextSize());
         }
 
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (null != params){
+        if (null != params) {
             int width = INVALID;
             int height = INVALID;
             if (params.width != ViewGroup.LayoutParams.WRAP_CONTENT
-                    && params.width != ViewGroup.LayoutParams.MATCH_PARENT){
+                    && params.width != ViewGroup.LayoutParams.MATCH_PARENT) {
                 width = params.width;
             }
 
             if (params.height != ViewGroup.LayoutParams.WRAP_CONTENT
-                    && params.height != ViewGroup.LayoutParams.MATCH_PARENT){
+                    && params.height != ViewGroup.LayoutParams.MATCH_PARENT) {
                 height = params.height;
             }
 
             //size
-            setViewSize(view,width,height);
+            setViewSize(view, width, height);
 
             // Padding
-            setPadding(view,view.getPaddingLeft(),view.getPaddingTop(),view.getPaddingRight(),view.getPaddingBottom());
+            setPadding(view, view.getPaddingLeft(), view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
         }
 
         // Margin
-        if(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
                     .getLayoutParams();
-            if (mMarginLayoutParams != null){
-                setMargin(view,mMarginLayoutParams.leftMargin,mMarginLayoutParams.topMargin,mMarginLayoutParams.rightMargin,mMarginLayoutParams.bottomMargin);
+            if (mMarginLayoutParams != null) {
+                setMargin(view, mMarginLayoutParams.leftMargin, mMarginLayoutParams.topMargin, mMarginLayoutParams.rightMargin, mMarginLayoutParams.bottomMargin);
             }
         }
 
@@ -417,65 +418,70 @@ public class ACViewUtils {
 
     /**
      * 缩放文字大小
+     *
      * @param textView button
-     * @param size sp值
+     * @param size     sp值
      */
-    public static void setSPTextSize(TextView textView,float size) {
-        float scaledSize = scale(textView.getContext(),size);
+    public static void setSPTextSize(TextView textView, float size) {
+        float scaledSize = scale(textView.getContext(), size);
         textView.setTextSize(scaledSize);
     }
 
     /**
      * 缩放文字大小,这样设置的好处是文字的大小不和密度有关，
      * 能够使文字大小在不同的屏幕上显示比例正确
-     * @param textView button
+     *
+     * @param textView   button
      * @param sizePixels px值
      */
-    public static void setTextSize(TextView textView,float sizePixels) {
+    public static void setTextSize(TextView textView, float sizePixels) {
         float scaledSize = scale(textView.getContext(), sizePixels);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,scaledSize);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, scaledSize);
     }
 
     /**
      * 缩放文字大小
-     * @param context 上下文
-     * @param textPaint textPaint
+     *
+     * @param context    上下文
+     * @param textPaint  textPaint
      * @param sizePixels px值
      */
-    public static void setTextSize(Context context,TextPaint textPaint,float sizePixels) {
-        float scaledSize = scale(context,sizePixels);
+    public static void setTextSize(Context context, TextPaint textPaint, float sizePixels) {
+        float scaledSize = scale(context, sizePixels);
         textPaint.setTextSize(scaledSize);
     }
 
     /**
      * 缩放文字大小
-     * @param context 上下文
-     * @param paint paint
+     *
+     * @param context    上下文
+     * @param paint      paint
      * @param sizePixels px值
      */
-    public static void setTextSize(Context context,Paint paint,float sizePixels) {
-        float scaledSize = scale(context,sizePixels);
+    public static void setTextSize(Context context, Paint paint, float sizePixels) {
+        float scaledSize = scale(context, sizePixels);
         paint.setTextSize(scaledSize);
     }
 
     /**
      * 设置View的PX尺寸
-     * @param view  如果是代码new出来的View，需要设置一个适合的LayoutParams
-     * @param widthPixels widthPixels
+     *
+     * @param view         如果是代码new出来的View，需要设置一个适合的LayoutParams
+     * @param widthPixels  widthPixels
      * @param heightPixels heightPixels
      */
-    public static void setViewSize(View view,int widthPixels, int heightPixels){
+    public static void setViewSize(View view, int widthPixels, int heightPixels) {
         int scaledWidth = scale(view.getContext(), widthPixels);
         int scaledHeight = scale(view.getContext(), heightPixels);
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        if(params == null){
+        if (params == null) {
             Logger.e(TAG, "setViewSize出错,如果是代码new出来的View，需要设置一个适合的LayoutParams");
             return;
         }
-        if (widthPixels != INVALID){
+        if (widthPixels != INVALID) {
             params.width = scaledWidth;
         }
-        if (heightPixels != INVALID){
+        if (heightPixels != INVALID) {
             params.height = scaledHeight;
         }
         view.setLayoutParams(params);
@@ -484,10 +490,10 @@ public class ACViewUtils {
     /**
      * 设置PX padding.
      *
-     * @param view the view
-     * @param left the left padding in pixels
-     * @param top the top padding in pixels
-     * @param right the right padding in pixels
+     * @param view   the view
+     * @param left   the left padding in pixels
+     * @param top    the top padding in pixels
+     * @param right  the right padding in pixels
      * @param bottom the bottom padding in pixels
      */
     public static void setPadding(View view, int left,
@@ -502,10 +508,10 @@ public class ACViewUtils {
     /**
      * 设置 PX margin.
      *
-     * @param view the view
-     * @param left the left margin in pixels
-     * @param top the top margin in pixels
-     * @param right the right margin in pixels
+     * @param view   the view
+     * @param left   the left margin in pixels
+     * @param top    the top margin in pixels
+     * @param right  the right margin in pixels
      * @param bottom the bottom margin in pixels
      */
     public static void setMargin(View view, int left, int top,
@@ -515,7 +521,7 @@ public class ACViewUtils {
         int scaledRight = scale(view.getContext(), right);
         int scaledBottom = scale(view.getContext(), bottom);
 
-        if(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams mMarginLayoutParams = (ViewGroup.MarginLayoutParams) view
                     .getLayoutParams();
             if (left != INVALID) {
@@ -538,7 +544,7 @@ public class ACViewUtils {
     /**
      * view设置background drawable
      *
-     * @param view view
+     * @param view     view
      * @param drawable d
      */
     public static void setBackgroundDrawable(View view, Drawable drawable) {
@@ -584,13 +590,14 @@ public class ACViewUtils {
 
     /**
      * 从父亲布局中移除自己
+     *
      * @param v view
      */
     public static void removeSelfFromParent(View v) {
         ViewParent parent = v.getParent();
-        if(parent != null){
-            if(parent instanceof ViewGroup){
-                ((ViewGroup)parent).removeView(v);
+        if (parent != null) {
+            if (parent instanceof ViewGroup) {
+                ((ViewGroup) parent).removeView(v);
             }
         }
     }
@@ -604,9 +611,11 @@ public class ACViewUtils {
     public static void changeBrightness(ImageView imageview, float brightness) {
         imageview.setColorFilter(getBrightnessMatrixColorFilter(brightness));
     }
+
     public static void changeBrightness(Drawable drawable, float brightness) {
         drawable.setColorFilter(getBrightnessMatrixColorFilter(brightness));
     }
+
     private static ColorMatrixColorFilter getBrightnessMatrixColorFilter(float brightness) {
         ColorMatrix matrix = new ColorMatrix();
         matrix.set(

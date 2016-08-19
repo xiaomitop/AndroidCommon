@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CommDemo</string>
+
+    <string-array name = "contact_option_array" >
+        <item> 呼叫 </item>
+        <item> 删除 </item>
+        <item> 编辑 </item>
+        <item> 发送消息 </item>
+    </string-array>
 </resources>
