@@ -3,8 +3,7 @@ package com.android.common.adapter;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 
-import com.android.common.adapter.interfaces.I_Adapter;
-import com.android.common.adapter.interfaces.I_Data;
+import com.android.common.adapter.i.I_Data;
 
 import java.util.ArrayList;
 import java.util.List;

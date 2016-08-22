@@ -18,29 +18,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: wangjie  email:tiantian.china.2@gmail.com
- * Date: 14-4-1
- * Time: 下午1:43
- */
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class ACIOUtil {
     public static final String TAG = ACIOUtil.class.getSimpleName();
-
-
-    /**
-     * 复制功能
-     *
-     * @param context
-     * @param content
-     */
-    public static void copy(Context context, String content) {
-        ClipboardManager cm = (ClipboardManager) context
-                .getSystemService(Context.CLIPBOARD_SERVICE);
-        cm.setText(content);
-    }
-
 
     /**
      * 关闭流
@@ -164,6 +144,4 @@ public class ACIOUtil {
     public static int writeFile(File file, String content) {
         return writeFile(file.getPath(), content);
     }
-
-
 }

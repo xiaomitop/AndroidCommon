@@ -1,4 +1,4 @@
-package com.android.common.adapter.interfaces;
+package com.android.common.adapter.i;
 
 import android.content.Context;
 import android.widget.ImageView;

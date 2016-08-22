@@ -35,7 +35,7 @@ import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.android.common.adapter.interfaces.I_ImageLoad;
+import com.android.common.adapter.i.I_ImageLoad;
 
 /**
  * @author Joan Zapata

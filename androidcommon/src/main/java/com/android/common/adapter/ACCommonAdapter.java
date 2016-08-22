@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.android.common.adapter.interfaces.I_Adapter;
+import com.android.common.adapter.i.I_Adapter;
 import java.util.List;
 
 import static com.android.common.adapter.BaseAdapterHelper.get;

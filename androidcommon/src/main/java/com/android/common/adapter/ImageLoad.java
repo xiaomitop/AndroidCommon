@@ -3,7 +3,7 @@ package com.android.common.adapter;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.android.common.adapter.interfaces.I_ImageLoad;
+import com.android.common.adapter.i.I_ImageLoad;
 import com.bumptech.glide.Glide;
 
 /**
