@@ -2,6 +2,7 @@ package com.yt.commdemo.mvp.presenter.fragment;
 
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.alibaba.fastjson.JSON;
 import com.android.common.http.OkHttpUtils;
@@ -19,6 +20,8 @@ import com.yt.commdemo.mvp.view.HttpFragmentView;
 import com.yt.commdemo.widget.EmptyLayout;
 
 import java.io.File;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import butterknife.OnClick;
@@ -148,6 +151,15 @@ public class HttpFragment extends FragmentPresenterImpl<HttpFragmentView> {
         if (downloadCall != null) {
             downloadCall.cancel();
             downloadCall = null;
+        }
+    }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        View view = this.getView();
+        if (view != null) {
+            view.setVisibility(menuVisible ? View.VISIBLE : View.GONE);
         }
     }
 }

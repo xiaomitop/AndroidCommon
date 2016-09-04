@@ -1,31 +1,33 @@
 package com.yt.commdemo.mvp.view;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.android.common.mvp.view.ViewImpl;
+import com.android.common.utils.ACViewUtils;
 import com.yt.commdemo.R;
+import com.yt.commdemo.adapter.MainPageAdapter;
+import com.yt.commdemo.bean.MainMenu;
 import com.yt.commdemo.mvp.presenter.fragment.DbFragment;
 import com.yt.commdemo.mvp.presenter.fragment.HttpFragment;
 import com.yt.commdemo.mvp.presenter.fragment.RxjavaFragment;
 import com.yt.commdemo.mvp.presenter.fragment.WidgetFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 
 public class MainActivityView extends ViewImpl {
-
-    private FragmentManager fm;
     private RelativeLayout lloyoutContainer;
-    private Fragment[] fragments;
-    // 当前fragment的index
-    private int currentTabIndex;
-    private Button[] mTabs;
+    private MainPageAdapter mainPageAdapter;
+    private TabLayout tLayoutMainMenu;
 
     @Override
     public int getLayoutId() {
@@ -36,67 +38,58 @@ public class MainActivityView extends ViewImpl {
     public void viewCreated(View rootView) {
         super.viewCreated(rootView);
         lloyoutContainer = ButterKnife.findById(rootView, R.id.lLoyoutContainer);
-        mTabs = new Button[4];
-        mTabs[0] = ButterKnife.findById(rootView, R.id.btnHttp);
-        mTabs[1] = ButterKnife.findById(rootView, R.id.btnRxjava);
-        mTabs[2] = ButterKnife.findById(rootView, R.id.btnDB);
-        mTabs[3] = ButterKnife.findById(rootView, R.id.btnWidget);
-        // 把HTTPtab设为选中状态
-        mTabs[0].setSelected(true);
+        tLayoutMainMenu = ButterKnife.findById(rootView, R.id.tLayoutMainMenu);
     }
-
-    @SuppressLint("CommitTransaction")
-    public void initFragment(Bundle savedInstanceState, FragmentManager fm){
-        this.fm = fm;
-        HttpFragment httpFragment = (HttpFragment) fm.findFragmentByTag(HttpFragment.class.getName());
-        if (httpFragment == null) {
-            httpFragment = new HttpFragment();
-        }
-        RxjavaFragment rxjavaFragment = (RxjavaFragment) fm.findFragmentByTag(RxjavaFragment.class.getName());
-        if (rxjavaFragment == null) {
-            rxjavaFragment = new RxjavaFragment();
-        }
-        DbFragment dbFragment = (DbFragment) fm.findFragmentByTag(DbFragment.class.getName());
-        if (dbFragment == null) {
-            dbFragment = new DbFragment();
-        }
-        WidgetFragment uiFragment = (WidgetFragment) fm.findFragmentByTag(WidgetFragment.class.getName());
-        if (uiFragment == null) {
-            uiFragment = new WidgetFragment();
-        }
-
-        fragments = new Fragment[]{httpFragment, rxjavaFragment, dbFragment, uiFragment};
-        if (savedInstanceState == null) {
-            if (lloyoutContainer != null) {
-                fm.beginTransaction().add(R.id.lLoyoutContainer, httpFragment, HttpFragment.class.getName())
-                        .commit();
+    public void initFragment(FragmentManager fm) {
+        List<MainMenu> mainMenus = new ArrayList<>();
+        mainMenus.add(new MainMenu(new HttpFragment(), R.mipmap.ic_bottom_menu_http, "HTTP"));
+        mainMenus.add(new MainMenu(new RxjavaFragment(), R.mipmap.ic_bottom_menu_rx, "RXJAVA"));
+        mainMenus.add(new MainMenu(new DbFragment(), R.mipmap.ic_bottom_menu_db, "DB"));
+        mainMenus.add(new MainMenu(new WidgetFragment(), R.mipmap.ic_bottom_menu_ui, "UI"));
+        mainPageAdapter = new MainPageAdapter(fm, mainMenus);
+        for (int i = 0; i < mainMenus.size(); i++) {
+            TextView textView = (TextView) ACViewUtils.layoutToView(getContext(), R.layout.button_main_menu);
+            textView.setText(mainMenus.get(i).getText());
+            Drawable drawable;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                drawable = getContext().getResources().getDrawable(mainMenus.get(i).getDrawableTop(), null);
+            } else {
+                drawable = getContext().getResources().getDrawable(mainMenus.get(i).getDrawableTop());
             }
-        } else {
-            FragmentTransaction trx = fm.beginTransaction();
-            for (Fragment fragment : fragments) {
-                if (!(fragment instanceof HttpFragment)) {
-                    if (!fragment.isAdded()) {
-                        trx.add(R.id.lLoyoutContainer, fragment);
-                    }
-                    trx.hide(fragment);
-                }
+            if (drawable != null) {
+                /// 这一步必须要做,否则不会显示.
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                textView.setCompoundDrawables(null, drawable, null, null);
             }
-            trx.commit();
+            TabLayout.Tab tab = tLayoutMainMenu.newTab();
+            tab.setCustomView(textView);
+            if (i == 0) {
+                tLayoutMainMenu.addTab(tab, true);
+                Fragment fragment = (Fragment) mainPageAdapter.instantiateItem(lloyoutContainer, i);
+                mainPageAdapter.setPrimaryItem(lloyoutContainer, i, fragment);
+                mainPageAdapter.finishUpdate(lloyoutContainer);
+            } else {
+                tLayoutMainMenu.addTab(tab, false);
+            }
         }
-    }
+        tLayoutMainMenu.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                Fragment fragment = (Fragment) mainPageAdapter.instantiateItem(lloyoutContainer, position);
+                mainPageAdapter.setPrimaryItem(lloyoutContainer, position, fragment);
+                mainPageAdapter.finishUpdate(lloyoutContainer);
+            }
 
-    public void restoreFragment(int index) {
-        if (currentTabIndex != index) {
-            FragmentTransaction trx = fm.beginTransaction();
-            trx.hide(fragments[currentTabIndex]);
-            if (!fragments[index].isAdded()) {
-                trx.add(R.id.lLoyoutContainer, fragments[index]);
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
             }
-            trx.show(fragments[index]).commit();
-        }
-        mTabs[currentTabIndex].setSelected(false);
-        // 把当前tab设为选中状态
-        mTabs[index].setSelected(true);
-        currentTabIndex = index;
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 }

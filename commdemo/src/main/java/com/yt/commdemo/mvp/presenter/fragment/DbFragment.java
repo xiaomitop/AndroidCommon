@@ -1,6 +1,7 @@
 package com.yt.commdemo.mvp.presenter.fragment;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.android.common.log.Logger;
 import com.android.common.mvp.presenter.FragmentPresenterImpl;
@@ -124,5 +125,14 @@ public class DbFragment extends FragmentPresenterImpl<DbFragmentView> {
                 return Observable.just(users);
             }
         });
+    }
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+        View view = this.getView();
+        if (view != null) {
+            view.setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+        }
     }
 }
