@@ -41,28 +41,30 @@ public abstract class ACCommonRecyclerAdapter<T> extends ACBaseRecyclerAdapter<T
         bindData(helper, position, getItem(position));
     }
 
-    public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         BaseAdapterHelper adapterHelper;
 
         public RecyclerViewHolder(View itemView, BaseAdapterHelper adapterHelper) {
             super(itemView);
             this.adapterHelper = adapterHelper;
-        }
-
-        @Override
-        public void onClick(View v) {
-            if (null != onItemClickListener) {
-                onItemClickListener.onItemClick(RecyclerViewHolder.this, v, getAdapterPosition());
-            }
-        }
-
-        @Override
-        public boolean onLongClick(View v) {
-            if (null != onItemLongClickListener) {
-                onItemLongClickListener.onItemLongClick(RecyclerViewHolder.this, v, getAdapterPosition());
-                return true;
-            }
-            return false;
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (null != onItemClickListener) {
+                        onItemClickListener.onItemClick(RecyclerViewHolder.this, v, getAdapterPosition());
+                    }
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if (null != onItemLongClickListener) {
+                        onItemLongClickListener.onItemLongClick(RecyclerViewHolder.this, v, getAdapterPosition());
+                        return true;
+                    }
+                    return false;
+                }
+            });
         }
     }
 
