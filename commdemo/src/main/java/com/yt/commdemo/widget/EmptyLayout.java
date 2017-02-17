@@ -5,9 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.android.common.ui.avloadingindicatorview.AVLoadingIndicatorView;
 import com.android.common.utils.ACStringUtils;
 import com.yt.commdemo.R;
 
@@ -24,10 +24,11 @@ public class EmptyLayout extends LinearLayout {
     private int mErrorState = LOADING;
     private ImageView imgErrorState;
     private TextView textLoad;
-    private AVLoadingIndicatorView barLoad;
     private String strTextLoadContent = "";
     private boolean clickEnable = false;
     private OnClickListener listener;
+
+    private ProgressBar barLoad;
 
     public EmptyLayout(Context context) {
         super(context);
@@ -48,7 +49,7 @@ public class EmptyLayout extends LinearLayout {
         View view = View.inflate(getContext(), R.layout.widget_empty, null);
         imgErrorState = (ImageView) view.findViewById(R.id.imgErrorState);
         textLoad = (TextView) view.findViewById(R.id.textLoad);
-        barLoad = (AVLoadingIndicatorView) view.findViewById(R.id.barLoad);
+        barLoad = (ProgressBar) view.findViewById(R.id.barLoad);
         setBackgroundColor(-1);
         imgErrorState.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,4 +1,4 @@
-package com.android.common.ui.dialog.materialdialog;
+package com.yt.materialdialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -22,8 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.android.common.R;
 
 /**
  * Created by drakeet on 9/28/14.
