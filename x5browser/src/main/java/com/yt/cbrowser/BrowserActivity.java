@@ -69,7 +69,7 @@ public class BrowserActivity extends Activity {
 
     private RelativeLayout mMenu;
 
-    private static final String mHomeUrl = "http://app.html5.qq.com/navi/index";
+    private String mHomeUrl = "http://app.html5.qq.com/navi/index";
     private static final int MAX_LENGTH = 14;
     private boolean mNeedTestPage = false;
     private final float disable = 0.5f;
@@ -89,6 +89,7 @@ public class BrowserActivity extends Activity {
         if (intent != null) {
             try {
                 mIntentUrl = new URL(intent.getData().toString());
+                mHomeUrl = mIntentUrl.toString();
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -1,6 +1,7 @@
 package com.yt.commdemo.mvp.presenter.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 
@@ -53,10 +54,11 @@ public class WidgetFragment extends FragmentPresenterImpl<WidgetFragmentView> {
         }
     }
 
+
     @OnClick(R.id.buttonX5)
     void testX5(){
         Intent intent = new Intent(getContext(), BrowserActivity.class);
-        //intent.setData(Uri.parse("http://www.it1352.com/121063.html"));
+        //intent.setData(Uri.parse("http://test.jhws.top:8081"));
         startActivity(intent);
     }
 }
