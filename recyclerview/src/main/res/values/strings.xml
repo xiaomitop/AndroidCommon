@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Recyclerview</string>
+
+    <string name="pull_to_refresh_pull">下拉刷新</string>
+    <string name="pull_to_refresh_release">松开刷新</string>
+    <string name="pull_to_refresh_refreshing">正在刷新\u2026</string>
+    <string name="pull_to_refresh_footer_release">松开加载更多</string>
+    <string name="pull_to_refresh_footer_pull">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing">加载中\u2026</string>
+</resources>

@@ -1,1 +1,1 @@
-include ':androidcommon', ':commdemo', ':x5browser', ':materialdialog'
+include ':androidcommon', ':commdemo', ':x5browser', ':materialdialog', ':recyclerview'

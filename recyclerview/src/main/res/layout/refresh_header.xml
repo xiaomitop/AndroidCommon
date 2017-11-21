@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:gravity="center"
+    android:paddingBottom="15dip"
+    android:paddingTop="10dip">
+
+    <RelativeLayout
+        android:id="@+id/rLayoutRefreshProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dip"
+        android:layout_marginStart="20dip"
+        android:layout_marginEnd="10dip"
+        android:layout_marginRight="10dip">
+
+        <ProgressBar
+            android:id="@+id/pBarPullToRefreshProgress"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iViewPullToRefreshImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@mipmap/ic_pulltorefresh_arrow"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/rLayoutRefreshProgress"
+        android:layout_toEndOf="@+id/rLayoutRefreshProgress"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tViewPullToRefreshText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pull_to_refresh_pull"
+            android:textColor="#5F5F5F"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tViewPullToRefreshUpdatedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="最近更新:07-11 12:00"
+            android:textSize="12sp"
+            android:textColor="#BBBCBD" />
+    </LinearLayout>
+
+</RelativeLayout>
